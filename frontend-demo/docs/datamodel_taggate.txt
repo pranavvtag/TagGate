@@ -1,0 +1,342 @@
+Project TAGGATE_V1 {
+  database_type: "PostgreSQL"
+  Note: "Current TAGGATE V1 data model"
+}
+
+Table role_master {
+  role_id varchar(20) [pk, not null]
+  role_name varchar(50) [not null, unique]
+}
+
+Table user_master {
+  user_id varchar(20) [pk, not null]
+  role_id varchar(20) [not null]
+  username varchar(50) [not null, unique]
+  password_hash varchar(255) [not null]
+  first_name varchar(50) [not null]
+  last_name varchar(50)
+  mobile_number varchar(15) [not null, unique]
+  email_id varchar(100) [unique]
+  status varchar(20) [not null, default: 'ACTIVE']
+  last_login timestamp
+  created_by varchar(20)
+  created_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  modified_by varchar(20)
+  modified_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table project_master {
+  project_id varchar(20) [pk, not null]
+  project_name varchar(100) [not null]
+  location varchar(50) [not null]
+  address_1 varchar(100) [not null]
+  address_2 varchar(100)
+  address_3 varchar(100)
+  zipcode varchar(20) [not null]
+  project_type varchar(20) [not null]
+  active boolean [not null, default: true]
+  created_by varchar(20) [not null]
+  created_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  modified_by varchar(20) [not null]
+  modified_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table owner_master {
+  owner_id varchar(20) [pk, not null]
+  user_id varchar(20)
+  first_name varchar(50) [not null]
+  last_name varchar(50) [not null]
+  middle_name varchar(50)
+  dob date
+  sex varchar(10)
+  phone_number varchar(20) [not null]
+  email_id varchar(100) [not null, unique]
+  address_1 varchar(100) [not null]
+  address_2 varchar(100)
+  address_3 varchar(100)
+  password varchar(255) [not null]
+  created_by varchar(20) [not null]
+  created_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  modified_by varchar(20) [not null]
+  modified_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  last_login_date timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  active boolean [not null, default: true]
+}
+
+Table property_master {
+  property_id varchar(20) [pk, not null]
+  project_id varchar(20) [not null]
+  owner_id varchar(20)
+  property_type varchar(20) [not null]
+  created_by varchar(20) [not null]
+  created_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  modified_by varchar(20) [not null]
+  modified_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table tenant_master {
+  tenant_id varchar(20) [pk, not null]
+  user_id varchar(20)
+  property_id varchar(20) [not null]
+  owner_id varchar(20) [not null]
+  first_name varchar(50) [not null]
+  last_name varchar(50) [not null]
+  middle_name varchar(50)
+  dob date
+  sex varchar(10)
+  phone_number varchar(20) [not null]
+  email_id varchar(100)
+  aadhaar_number varchar(20)
+  pan_number varchar(20)
+  passport_number varchar(20)
+  move_in_date date [not null]
+  move_out_date date
+  agreement_start_date date [not null]
+  agreement_end_date date [not null]
+  monthly_rent numeric(12,2)
+  security_deposit numeric(12,2)
+  emergency_contact_name varchar(100)
+  emergency_contact_number varchar(20)
+  status varchar(20) [not null]
+  created_by varchar(20) [not null]
+  created_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  modified_by varchar(20) [not null]
+  modified_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table vehicle_master {
+  vehicle_id varchar(20) [pk, not null]
+  vehicle_number varchar(20) [not null, unique]
+  vehicle_type varchar(20) [not null]
+  vehicle_brand varchar(50)
+  vehicle_model varchar(50)
+  vehicle_color varchar(30)
+  owner_id varchar(20) [not null]
+  rfid_tag varchar(50) [unique]
+  registration_date date
+  active boolean [not null, default: true]
+  created_by varchar(20) [not null]
+  created_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  modified_by varchar(20) [not null]
+  modified_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table pre_approval_master {
+  pre_approval_id varchar(20) [pk, not null]
+  project_id varchar(20) [not null]
+  property_id varchar(20) [not null]
+  owner_id varchar(20) [not null]
+  visitor_type varchar(50) [not null]
+  visitor_name varchar(100) [not null]
+  mobile_number varchar(15)
+  vehicle_number varchar(20)
+  purpose varchar(200)
+  expected_entry_date date [not null]
+  expected_entry_time timestamp
+  valid_till timestamp
+  number_of_entries_allowed int [not null, default: 1]
+  approval_status varchar(20) [not null]
+  notes varchar(500)
+  active boolean [not null, default: true]
+  created_by varchar(20) [not null]
+  created_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  modified_by varchar(20) [not null]
+  modified_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table service_master {
+  service_type_id varchar(20) [pk, not null]
+  service_type_name varchar(100) [not null]
+  ticket_level varchar(20) [not null]
+  active boolean [not null, default: true]
+  created_by varchar(20) [not null]
+  created_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  modified_by varchar(20) [not null]
+  modified_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table helpdesk_ticket_master {
+  ticket_id varchar(20) [pk, not null]
+  project_id varchar(20)
+  property_id varchar(20)
+  owner_id varchar(20)
+  ticket_level varchar(20) [not null]
+  service_type_id varchar(20)
+  ticket_title varchar(200) [not null]
+  description varchar(1000)
+  priority varchar(20) [not null]
+  assigned_to varchar(20)
+  status varchar(20) [not null]
+  raised_date date [not null]
+  assigned_date date
+  completed_date date
+  resolution_remarks varchar(1000)
+  active boolean [not null, default: true]
+  created_by varchar(20) [not null]
+  created_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  modified_by varchar(20) [not null]
+  modified_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table designation_master {
+  designation_id varchar(20) [pk, not null]
+  designation_name varchar(100) [not null, unique]
+  department varchar(50) [not null]
+  description varchar(500)
+  active boolean [not null, default: true]
+  created_by varchar(20) [not null]
+  created_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  modified_by varchar(20) [not null]
+  modified_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table employee_master {
+  employee_id varchar(20) [pk, not null]
+  user_id varchar(20)
+  employee_code varchar(20) [unique]
+  first_name varchar(50) [not null]
+  last_name varchar(50)
+  mobile_number varchar(15) [not null]
+  email varchar(100)
+  gender varchar(10)
+  date_of_birth date
+  joining_date date [not null]
+  employee_type varchar(30) [not null]
+  designation_id varchar(20) [not null]
+  address_1 varchar(100) [not null]
+  address_2 varchar(100)
+  address_3 varchar(100)
+  zipcode varchar(20)
+  active boolean [not null, default: true]
+  created_by varchar(20) [not null]
+  created_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  modified_by varchar(20) [not null]
+  modified_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table ticket_assignment_table {
+  assignment_id varchar(20) [pk, not null]
+  ticket_id varchar(20) [not null]
+  service_type_id varchar(20) [not null]
+  employee_id varchar(20) [not null]
+  assignment_status varchar(20) [not null]
+  assigned_date date [not null]
+  accepted_date date
+  start_date date
+  completion_date date
+  remarks varchar(500)
+  active boolean [not null, default: true]
+  created_by varchar(20) [not null]
+  created_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  modified_by varchar(20) [not null]
+  modified_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table vendor_master {
+  vendor_id varchar(20) [pk, not null]
+  user_id varchar(20)
+  vendor_name varchar(100) [not null]
+  business_name varchar(150)
+  vendor_type varchar(50)
+  service_category varchar(50) [not null]
+  contact_person varchar(100) [not null]
+  phone_number varchar(20) [not null]
+  email_id varchar(100)
+  address_1 varchar(100) [not null]
+  address_2 varchar(100)
+  address_3 varchar(100)
+  city varchar(50) [not null]
+  state varchar(50) [not null]
+  zipcode varchar(20) [not null]
+  gst_number varchar(30)
+  pan_number varchar(20)
+  bank_account_number varchar(30)
+  ifsc_code varchar(20)
+  rating numeric(3,2)
+  status varchar(20) [not null]
+  created_by varchar(20) [not null]
+  created_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  modified_by varchar(20) [not null]
+  modified_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table notice_master {
+  notice_id varchar(20) [pk, not null]
+  project_id varchar(20) [not null]
+  title varchar(200) [not null]
+  description varchar(1000) [not null]
+  publish_date date [not null]
+  expiry_date date
+  status varchar(20) [not null, default: 'ACTIVE']
+  created_by varchar(20)
+  created_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  modified_by varchar(20)
+  modified_on timestamp [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table owner_signin_otp {
+  otp_id bigserial [pk, not null]
+  user_id varchar(20) [not null]
+  email_id varchar(100) [not null]
+  otp_code varchar(6) [not null]
+  created_at timestamp [not null, default: `CURRENT_TIMESTAMP`]
+  expires_at timestamp [not null]
+  verified_at timestamp
+  consumed_at timestamp
+}
+
+Ref: user_master.role_id > role_master.role_id
+Ref: user_master.created_by > user_master.user_id
+Ref: user_master.modified_by > user_master.user_id
+
+Ref: owner_master.user_id > user_master.user_id
+Ref: owner_master.created_by > user_master.user_id
+Ref: owner_master.modified_by > user_master.user_id
+
+Ref: project_master.created_by > user_master.user_id
+Ref: project_master.modified_by > user_master.user_id
+
+Ref: property_master.project_id > project_master.project_id
+Ref: property_master.owner_id > owner_master.owner_id
+Ref: property_master.created_by > user_master.user_id
+Ref: property_master.modified_by > user_master.user_id
+
+Ref: tenant_master.user_id > user_master.user_id
+Ref: tenant_master.property_id > property_master.property_id
+Ref: tenant_master.owner_id > owner_master.owner_id
+Ref: tenant_master.created_by > user_master.user_id
+Ref: tenant_master.modified_by > user_master.user_id
+
+Ref: vehicle_master.owner_id > owner_master.owner_id
+Ref: pre_approval_master.project_id > project_master.project_id
+Ref: pre_approval_master.property_id > property_master.property_id
+Ref: pre_approval_master.owner_id > owner_master.owner_id
+
+Ref: service_master.created_by > user_master.user_id
+Ref: service_master.modified_by > user_master.user_id
+
+Ref: helpdesk_ticket_master.project_id > project_master.project_id
+Ref: helpdesk_ticket_master.property_id > property_master.property_id
+Ref: helpdesk_ticket_master.owner_id > owner_master.owner_id
+Ref: helpdesk_ticket_master.service_type_id > service_master.service_type_id
+Ref: helpdesk_ticket_master.created_by > user_master.user_id
+Ref: helpdesk_ticket_master.modified_by > user_master.user_id
+
+Ref: employee_master.user_id > user_master.user_id
+Ref: employee_master.designation_id > designation_master.designation_id
+Ref: employee_master.created_by > user_master.user_id
+Ref: employee_master.modified_by > user_master.user_id
+
+Ref: ticket_assignment_table.ticket_id > helpdesk_ticket_master.ticket_id
+Ref: ticket_assignment_table.service_type_id > service_master.service_type_id
+Ref: ticket_assignment_table.employee_id > employee_master.employee_id
+
+Ref: vendor_master.user_id > user_master.user_id
+Ref: vendor_master.created_by > user_master.user_id
+Ref: vendor_master.modified_by > user_master.user_id
+
+Ref: notice_master.project_id > project_master.project_id
+Ref: notice_master.created_by > user_master.user_id
+Ref: notice_master.modified_by > user_master.user_id
+
+Ref: owner_signin_otp.user_id > user_master.user_id

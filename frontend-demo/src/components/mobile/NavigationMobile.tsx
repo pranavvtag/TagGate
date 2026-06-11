@@ -18,7 +18,7 @@ export function MobileTopBar({ title, compact = false }: { title?: string; compa
 export function MobileBottomNav() {
   const pathname = usePathname();
   const { role } = useSession();
-  const items = modulesForRole(role).slice(0, 5);
+  const items = modulesForRole(role);
 
   return (
     <nav className={styles.bottomNav} aria-label="Mobile primary">
