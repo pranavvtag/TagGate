@@ -1,0 +1,77 @@
+{
+  "community": {
+    "name": "AIRA Smart Villas",
+    "resident": "Achintya",
+    "weather": "26°C",
+    "systemStatus": "All Systems Normal"
+  },
+  "notifications": [
+    { "id": "n-001", "title": "Water Supply Maintenance", "date": "June 4, 2026", "type": "Notice", "priority": "High", "message": "Water supply maintenance from 10:00 AM to 12:00 PM for tower valves." },
+    { "id": "n-002", "title": "Community BBQ Event", "date": "June 7, 2026", "type": "Announcement", "priority": "Medium", "message": "Join the community BBQ night at the clubhouse lawn." },
+    { "id": "n-003", "title": "Visitor Gate Policy Updated", "date": "June 9, 2026", "type": "Security", "priority": "Medium", "message": "Pre-approval is now required for all delivery visitors after 9:00 PM." },
+    { "id": "n-004", "title": "Maintenance Payment Reminder", "date": "June 10, 2026", "type": "Payment", "priority": "High", "message": "June maintenance dues are pending for Villa A-104." },
+    { "id": "n-005", "title": "Yoga Session Registration Open", "date": "June 8, 2026", "type": "Announcement", "priority": "Low", "message": "Morning yoga registrations are open for residents and tenants." }
+  ],
+  "amenities": [
+    { "id": "swimming-pool", "name": "Swimming Pool", "icon": "waves", "hours": "6:00 AM - 8:00 PM", "status": "Available", "fee": 500, "slots": ["6:00 AM - 7:00 AM", "7:00 AM - 8:00 AM", "8:00 AM - 9:00 AM", "5:00 PM - 6:00 PM", "6:00 PM - 7:00 PM", "7:00 PM - 8:00 PM"], "disabledSlots": ["7:00 AM - 8:00 AM", "7:00 PM - 8:00 PM"] },
+    { "id": "gymnasium", "name": "Gymnasium", "icon": "dumbbell", "hours": "5:00 AM - 10:00 PM", "status": "Available", "fee": 250, "slots": ["6:00 AM - 7:00 AM", "7:00 AM - 8:00 AM", "8:00 PM - 9:00 PM"], "disabledSlots": [] },
+    { "id": "party-hall", "name": "Party Hall", "icon": "users", "hours": "24 Hours", "status": "Booked", "fee": 5000, "slots": ["10:00 AM - 2:00 PM", "6:00 PM - 10:00 PM"], "disabledSlots": ["10:00 AM - 2:00 PM", "6:00 PM - 10:00 PM"] },
+    { "id": "badminton-court", "name": "Badminton Court", "icon": "trophy", "hours": "6:00 AM - 10:00 PM", "status": "Available", "fee": 300, "slots": ["6:00 AM - 7:00 AM", "7:00 PM - 8:00 PM", "8:00 PM - 9:00 PM"], "disabledSlots": [] },
+    { "id": "cafe", "name": "Café", "icon": "coffee", "hours": "8:00 AM - 8:00 PM", "status": "Available", "fee": 0, "slots": ["9:00 AM - 10:00 AM", "4:00 PM - 5:00 PM"], "disabledSlots": [] }
+  ],
+  "bookings": [
+    { "id": "b-001", "amenity": "Swimming Pool", "date": "June 7, 2026", "time": "6:00 PM - 7:00 PM", "status": "Confirmed" }
+  ],
+  "events": [
+    { "id": "bbq-night", "name": "Community BBQ Night", "category": "Social", "date": "June 7, 2026", "time": "6:00 PM - 9:00 PM", "location": "Clubhouse Lawn", "attendees": 45, "description": "Join us for an evening of delicious food, music, and fun! Bring your family and friends.", "status": "Upcoming" },
+    { "id": "yoga-session", "name": "Yoga Session", "category": "Wellness", "date": "June 8, 2026", "time": "7:00 AM - 8:00 AM", "location": "Community Park", "attendees": 12, "description": "A guided mobility and breathing session for residents.", "status": "Upcoming" },
+    { "id": "holi-celebration", "name": "Holi Celebration", "category": "Festival", "date": "March 25, 2026", "time": "10:00 AM - 1:00 PM", "location": "Central Plaza", "attendees": 120, "description": "Community festival celebration.", "status": "Past" }
+  ],
+  "residents": [
+    { "id": "r-001", "name": "Achintya Rao", "property": "Villa A-104", "role": "Resident", "phone": "+91 98765 12001", "status": "Active" },
+    { "id": "r-002", "name": "Mira Nair", "property": "Villa B-208", "role": "NRI Owner", "phone": "+971 55 210 4401", "status": "Active" },
+    { "id": "r-003", "name": "Karthik Menon", "property": "Villa C-012", "role": "Tenant", "phone": "+91 98444 33120", "status": "Pending" },
+    { "id": "r-004", "name": "Sara Thomas", "property": "Villa A-119", "role": "Property Owner", "phone": "+91 90000 44551", "status": "Inactive" }
+  ],
+  "properties": [
+    { "id": "p-001", "number": "Villa A-104", "type": "Villa", "owner": "Achintya Rao", "occupancy": "Owner Occupied", "maintenanceDue": 12500 },
+    { "id": "p-002", "number": "Villa B-208", "type": "Villa", "owner": "Mira Nair", "occupancy": "Vacant", "maintenanceDue": 0 },
+    { "id": "p-003", "number": "Villa C-012", "type": "Apartment", "owner": "Sara Thomas", "occupancy": "Tenant Occupied", "maintenanceDue": 8200 }
+  ],
+  "tenants": [
+    { "id": "t-001", "name": "Karthik Menon", "property": "Villa C-012", "moveIn": "May 1, 2026", "moveOut": "April 30, 2027", "documents": "Aadhaar, PAN, Rental Agreement", "approval": "Pending" },
+    { "id": "t-002", "name": "Nisha Verma", "property": "Villa D-014", "moveIn": "January 10, 2026", "moveOut": "January 9, 2027", "documents": "Aadhaar, Passport", "approval": "Approved" }
+  ],
+  "visitors": [
+    { "id": "v-001", "name": "Rahul Courier", "purpose": "Delivery", "property": "Villa A-104", "status": "Pre-approved", "time": "Today, 5:30 PM" },
+    { "id": "v-002", "name": "Deepak Sharma", "purpose": "Guest", "property": "Villa B-208", "status": "At Gate", "time": "Today, 6:15 PM" }
+  ],
+  "complaints": [
+    { "id": "c-001", "category": "Plumbing", "description": "Water leakage in kitchen sink", "status": "Assigned", "assignee": "Ravi Maintenance", "priority": "High" },
+    { "id": "c-002", "category": "Electrical", "description": "Street light flickering near Block C", "status": "Open", "assignee": "Unassigned", "priority": "Medium" },
+    { "id": "c-003", "category": "Housekeeping", "description": "Lobby cleaning required", "status": "Resolved", "assignee": "Facility Team", "priority": "Low" }
+  ],
+  "services": [
+    { "id": "s-001", "category": "Plumbing", "provider": "AquaFix Services", "status": "Accepted", "rating": 4.7 },
+    { "id": "s-002", "category": "Electrical", "provider": "VoltCare", "status": "Available", "rating": 4.5 },
+    { "id": "s-003", "category": "Pest Control", "provider": "CleanNest", "status": "Available", "rating": 4.3 }
+  ],
+  "groceryOrders": [
+    { "id": "g-001", "items": "Milk 2L, Tomatoes 1kg", "amount": 210, "status": "Out for Delivery" },
+    { "id": "g-002", "items": "Rice 5kg, Eggs 12pc", "amount": 620, "status": "Delivered" }
+  ],
+  "utilities": [
+    { "id": "u-001", "name": "Electricity", "daily": "18 kWh", "weekly": "112 kWh", "monthly": "438 kWh", "alert": "Normal" },
+    { "id": "u-002", "name": "Water", "daily": "620 L", "weekly": "4,140 L", "monthly": "16,280 L", "alert": "High usage" },
+    { "id": "u-003", "name": "Maintenance Charges", "daily": "-", "weekly": "-", "monthly": "₹12,500 due", "alert": "Reminder sent" }
+  ],
+  "nriReports": [
+    { "id": "nri-001", "property": "Villa B-208", "occupancy": "Vacant", "inspection": "Completed June 2, 2026", "maintenance": "Garden trimming scheduled" }
+  ],
+  "assistantSuggestions": [
+    "Raise a plumbing complaint for kitchen leakage",
+    "Book an electrician tomorrow",
+    "Show electricity usage this week",
+    "How much maintenance is pending?"
+  ]
+}

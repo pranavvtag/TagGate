@@ -1,0 +1,196 @@
+.screen {
+  min-height: 100vh;
+  background: #f7f8fa;
+  padding-bottom: 92px;
+}
+
+.topBar {
+  min-height: 113px;
+  background: #0f7780;
+  color: white;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 28px;
+  padding: 18px 20px;
+}
+
+.brand {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.title {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 850;
+  letter-spacing: 0;
+}
+
+.content {
+  padding: 20px;
+}
+
+.sectionTitle {
+  margin: 0 0 16px;
+  font-size: 21px;
+  font-weight: 850;
+  color: #202737;
+}
+
+.bottomNav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 75px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background: #156d78;
+  color: #b7d9de;
+  z-index: 30;
+}
+
+.navItem {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 4px;
+  font-size: 10px;
+}
+
+.navItem svg {
+  width: 23px;
+  height: 23px;
+}
+
+.navItemActive {
+  color: white;
+}
+
+.heroCard {
+  border-radius: 15px;
+  background: linear-gradient(145deg, #147b84, #0c6169);
+  color: white;
+  padding: 25px;
+  box-shadow: 0 12px 22px rgba(15, 119, 128, 0.22);
+}
+
+.actionGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px 18px;
+}
+
+.actionTile {
+  display: grid;
+  min-height: 86px;
+  place-items: center;
+  align-content: center;
+  gap: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+  color: #202737;
+  font-size: 12px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.actionTile svg {
+  width: 27px;
+  height: 27px;
+  color: #0f7780;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+}
+
+.softCard {
+  border: 1px solid #e5e7eb;
+  border-radius: 15px;
+  background: white;
+  padding: 16px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
+.amenityIcon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 11px;
+  background: #dff7f3;
+  color: #0f7780;
+  flex: 0 0 auto;
+}
+
+.primaryButton {
+  min-height: 49px;
+  width: 100%;
+  border: 0;
+  border-radius: 11px;
+  background: #0f7780;
+  color: white;
+  font-weight: 800;
+}
+
+.slotGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.slot {
+  min-height: 86px;
+  border: 1px solid #dce2e8;
+  border-radius: 11px;
+  background: white;
+  color: #202737;
+  font-weight: 700;
+}
+
+.slotActive {
+  border-color: #0f7780;
+  background: #dff7f3;
+}
+
+.slot:disabled {
+  background: #f8fafc;
+  color: #cbd5e1;
+}
+
+.successScreen {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 53px 1fr 75px;
+  background: #f7f8fa;
+}
+
+.successBody {
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.check {
+  display: grid;
+  width: 96px;
+  height: 96px;
+  place-items: center;
+  border-radius: 999px;
+  background: #0f7780;
+  color: white;
+}
+
+@media (max-width: 360px) {
+  .actionGrid {
+    gap: 10px;
+  }
+
+  .actionTile {
+    min-height: 78px;
+    font-size: 11px;
+  }
+}
